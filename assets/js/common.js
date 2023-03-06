@@ -205,7 +205,7 @@ $(document).ready(function () {
       const iosSrc = model.iosSrc;
       console.log(iosSrc);
 
-      let href = `${iosSrc}#`;
+      let href = `${iosSrc}#custom=https://adv-marketplace.advin-global.com/witnes.html&allowsContentScaling=0`;
 
       activateAR(href, button, true);
 
