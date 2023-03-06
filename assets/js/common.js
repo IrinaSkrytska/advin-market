@@ -228,10 +228,10 @@ $(document).ready(function () {
 
       const androidSrc = model.src;
 
-      if (!androidSrc) {
-        console.error("Invalid src in <ar-button>: " + button);
-        return;
-      }
+      // if (!androidSrc) {
+      //   console.error("Invalid src in <ar-button>: " + button);
+      //   return;
+      // }
       let href = null;
       href = `intent://arvr.google.com/scene-viewer/1.1?file=${androidSrc}&mode=ar_only&link=https://adv-marketplace.advin-global.com/cart.html&title=Go to the order page`;
 
