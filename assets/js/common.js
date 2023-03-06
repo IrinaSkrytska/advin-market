@@ -72,7 +72,9 @@ $(document).ready(function () {
 
     switch (id) {
       case "product-1": {
-        fetch(`https://adv-marketplace-back.onrender.com/examples/models/${id}`)
+        fetch(
+          `https://adv-marketplace-back.onrender.com/examples/models/6400d08c0de00735df02fc87`
+        )
           .then((response) => response.json())
           .then(({ data }) => {
             const iosSrc = data.model.ios;
