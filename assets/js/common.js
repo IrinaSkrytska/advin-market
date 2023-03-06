@@ -72,11 +72,15 @@ $(document).ready(function () {
 
     switch (id) {
       case "product-1": {
-        model.iosSrc =
-          "/assets/models/ios/Chair.usdz#custom=https://adv-marketplace.advin-global.com/witnes.html&allowsContentScaling=0";
-        model.src =
-          "https://adv-marketplace.advin-global.com/assets/models/android/chair.glb";
-        returnPage = "https://adv-marketplace.advin-global.com/";
+        fetch(`https://adv-marketplace-back.onrender.com/examples/models/${id}`)
+          .then((response) => response.json())
+          .then(({ data }) => {
+            const iosSrc = data.model.ios;
+
+            model.iosSrc = iosSrc;
+
+            returnPage = "https://adv-marketplace.advin-global.com/";
+          });
         break;
       }
       case "product-2": {
@@ -156,7 +160,7 @@ $(document).ready(function () {
     initializeArButton(model.src, model.iosSrc);
   });
 
-  // --- AR --- this is the best game for ever =)))
+  // --- AR --- this is the best game forever =)))
 
   const IS_ANDROID = /android/i.test(navigator.userAgent);
   const IS_IOS =
@@ -200,7 +204,7 @@ $(document).ready(function () {
     }
   };
 
-  const initializeArButton = (src, iosSrc) => {
+  const initializeArButton = (id) => {
     if (IS_IOS_CHROME || IS_IOS_SAFARI) {
       const iosSrc = model.iosSrc;
       console.log(iosSrc);
@@ -214,9 +218,9 @@ $(document).ready(function () {
         return;
       }
 
-      // const Element = document.getElementById("ar-link");
-      // Element.href = "https://adv-marketplace.advin-global.com" + model.iosSrc;
-      // Element.click();
+      const Element = document.getElementById("ar-link");
+      Element.href = "https://adv-marketplace.advin-global.com" + model.iosSrc;
+      Element.click();
     } else if (SUPPORTS_SCENEVIEWER) {
       // system supports AR via scene viewer
 
@@ -227,7 +231,7 @@ $(document).ready(function () {
         return;
       }
       let href = null;
-      href = `intent://arvr.google.com/scene-viewer/1.1?file=${androidSrc}&mode=ar_only&link=https://adv-marketplace.advin-global.com/&title=Go to the order page`;
+      href = `intent://arvr.google.com/scene-viewer/1.1?file=${androidSrc}&mode=ar_only&link=https://adv-marketplace.advin-global.com/cart.html&title=Go to the order page`;
 
       href +=
         `#Intent;scheme=https;` +
